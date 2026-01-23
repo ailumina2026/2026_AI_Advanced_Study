@@ -1,6 +1,6 @@
 task: pose
 mode: train
-model: yolo11n-pose.pt
+model: ../runs/pose/train6/weights/best.pt
 data: ../data/config.yaml
 epochs: 100
 time: null
