@@ -15,39 +15,35 @@ YOLO Detection 모델을 활용하여 **교통 신호등 이미지**에서 신�
 ## 데이터셋
 
 ### 출처
-- Traffic Human Detection by DA150X Pro Gamer (https://universe.roboflow.com/da150x-pro-gamer/traffic-human-detection)
-  - 원본 11개 클래스에서 교통 신호등 클래스만 추출하여 사용
+- [YYdream/traffic_light_data (Hugging Face)](https://huggingface.co/datasets/YYdream/traffic_light_data)
 
-### 클래스 (6개)
+### 클래스 (3개)
 | 클래스 ID | 영문명 | 한글명 | 자율주행 동작 |
 |:---------:|:------:|:------:|:-------------|
 | 0 | green | 초록불 | GO (진행) |
-| 1 | green_left | 초록 좌회전 | LEFT (좌회전 가능) |
-| 2 | red | 빨간불 | STOP (정지) |
-| 3 | red_left | 빨간 좌회전 | STOP_LEFT (좌회전 금지) |
-| 4 | yellow | 노란불 | CAUTION (서행) |
-| 5 | yellow_left | 노란 좌회전 | CAUTION_LEFT (좌회전 주의) |
+| 1 | red | 빨간불 | STOP (정지) |
+| 2 | yellow | 노란불 | CAUTION (서행) |
 
 ### 데이터 분할
 | 분할 | 이미지 수 | 비율 |
 |:----:|:---------:|:----:|
-| train | 272장 | 80% |
-| val | 34장 | 10% |
-| test | 34장 | 10% |
-| **총** | **340장** | 100% |
+| train | 700장 | 78% |
+| val | 100장 | 11% |
+| test | 100장 | 11% |
+| **총** | **900장** | 100% |
 
 ### 폴더 구조
 ```
 data/
 ├── config.yaml           # 데이터셋 설정 파일 (Detection 필수!)
 ├── train/
-│   ├── images/           (272장)
+│   ├── images/           (700장)
 │   └── labels/           (바운딩 박스 좌표)
 ├── val/
-│   ├── images/           (34장)
+│   ├── images/           (100장)
 │   └── labels/
 ├── test/
-│   ├── images/           (34장)
+│   ├── images/           (100장)
 │   └── labels/
 └── demo/                 (테스트용 이미지)
 ```
@@ -96,7 +92,7 @@ YOLO Detection 모델을 학습시킵니다.
 
 **주요 내용:**
 - 신호 분석 함수 구현
-- 자율주행 동작 매핑 (GO/STOP/CAUTION/LEFT/STOP_LEFT/CAUTION_LEFT)
+- 자율주행 동작 매핑 (GO/STOP/CAUTION)
 - 결과 시각화
 
 **빈칸 (4개):**
@@ -169,20 +165,16 @@ for box in boxes:
 ```python
 def get_driving_action(signal_class):
     actions = {
-        0: ('GO', '🟢 진행하세요', (0, 255, 0)),                    # green
-        1: ('LEFT', '🟢⬅️ 좌회전 가능', (0, 200, 255)),            # green_left
-        2: ('STOP', '🔴 정지하세요', (255, 0, 0)),                  # red
-        3: ('STOP_LEFT', '🔴⬅️ 좌회전 금지', (255, 100, 100)),     # red_left
-        4: ('CAUTION', '🟡 서행하세요', (255, 255, 0)),             # yellow
-        5: ('CAUTION_LEFT', '🟡⬅️ 좌회전 주의', (255, 200, 0))     # yellow_left
+        0: ('GO', '🟢 진행하세요', (0, 255, 0)),        # green
+        1: ('STOP', '🔴 정지하세요', (255, 0, 0)),      # red
+        2: ('CAUTION', '🟡 서행하세요', (255, 255, 0))  # yellow
     }
     return actions.get(signal_class, ('UNKNOWN', '❓ 신호 불명', (128, 128, 128)))
 ```
 
 ### 우선순위 로직
-- **안전 우선**: 빨간불(STOP, STOP_LEFT)이 탐지되면 무조건 정지
+- **안전 우선**: 빨간불(STOP)이 탐지되면 무조건 정지
 - **신뢰도 기준**: 같은 우선순위 내에서는 가장 높은 confidence 선택
-- **좌회전 신호**: 색상별로 좌회전 허용/금지/주의 표시
 
 ---
 
@@ -193,12 +185,12 @@ def get_driving_action(signal_class):
        ↓
 2. Google Drive 마운트 & 경로 설정
        ↓
-3. 데이터셋 확인 (340장, 6개 클래스, 80:10:10 분할)
+3. 데이터셋 확인 (900장, 3개 클래스)
        ↓
 4. 모델 학습 (01_train.ipynb)
    - yolo11n.pt 로드
    - config.yaml로 데이터 설정
-   - 50 epochs 학습
+   - 10 epochs 학습
        ↓
 5. 모델 평가 (02_test.ipynb)
    - mAP50 / mAP50-95
@@ -214,4 +206,4 @@ def get_driving_action(signal_class):
 
 ## 참고 자료
 - [Ultralytics YOLO Detection 문서](https://docs.ultralytics.com/tasks/detect/)
-- [Traffic Human Detection - Roboflow](https://universe.roboflow.com/da150x-pro-gamer/traffic-human-detection)
+- [YYdream/traffic_light_data (Hugging Face)](https://huggingface.co/datasets/YYdream/traffic_light_data)
