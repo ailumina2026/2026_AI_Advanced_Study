@@ -65,7 +65,7 @@ YOLO Detection 모델을 학습시킵니다.
 | 1 | `DATA_CONFIG = _______` | `'../data/config.yaml'` | config.yaml 파일 경로 |
 | 2 | `model = YOLO(_______)` | `MODEL_SIZE` | 위에서 정의한 변수 |
 | 3 | `model._______()` | `train` | 학습 메서드 |
-| 4 | `"../runs/_______/train/"` | `detect` | Detection 결과 폴더 |
+| 4 | `"./runs/_______/train/"` | `detect` | Detection 결과 폴더 |
 
 ---
 
@@ -80,7 +80,7 @@ YOLO Detection 모델을 학습시킵니다.
 **빈칸 (3개):**
 | # | 위치 | 정답 | 힌트 |
 |---|------|------|------|
-| 1 | `MODEL_PATH = _______` | `'../runs/detect/train/weights/best.pt'` | 학습된 모델 경로 |
+| 1 | `MODEL_PATH = _______` | `'./runs/detect/train/weights/best.pt'` | 학습된 모델 경로 |
 | 2 | `model._______()` | `val` | 검증 메서드 |
 | 3 | `results[0]._______` | `boxes` | Detection 결과 (바운딩 박스) |
 
@@ -135,7 +135,7 @@ results = model.train(
 
 ### 모델 검증
 ```python
-model = YOLO('../runs/detect/train/weights/best.pt')
+model = YOLO('./runs/detect/train/weights/best.pt')
 metrics = model.val(data='../data/config.yaml', split='test')
 
 print(f"mAP50: {metrics.box.map50:.4f}")

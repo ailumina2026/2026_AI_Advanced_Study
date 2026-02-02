@@ -66,7 +66,7 @@ YOLO Classification 모델을 학습시킵니다.
 | 2 | `'yolo11n-_____.pt'` | `cls` | Classification 접미사 |
 | 3 | `model = YOLO(_______)` | `MODEL_SIZE` | 위에서 정의한 변수 |
 | 4 | `model._______()` | `train` | 학습 메서드 |
-| 5 | `"../runs/_______/train/"` | `classify` | Classification 결과 폴더 |
+| 5 | `"./runs/_______/train/"` | `classify` | Classification 결과 폴더 |
 
 ---
 
@@ -82,7 +82,7 @@ YOLO Classification 모델을 학습시킵니다.
 | # | 위치 | 정답 | 힌트 |
 |---|------|------|------|
 | 1 | `from ultralytics import _______` | `YOLO` | 핵심 모듈 |
-| 2 | `MODEL_PATH = _______` | `'../runs/classify/train/weights/best.pt'` | 학습된 모델 경로 |
+| 2 | `MODEL_PATH = _______` | `'./runs/classify/train/weights/best.pt'` | 학습된 모델 경로 |
 | 3 | `model._______()` | `val` | 검증 메서드 |
 
 ---
@@ -133,7 +133,7 @@ results = model.train(
 
 ### 모델 검증
 ```python
-model = YOLO('../runs/classify/train/weights/best.pt')
+model = YOLO('./runs/classify/train/weights/best.pt')
 metrics = model.val(data='../data', split='test')
 
 print(f"Top-1 Accuracy: {metrics.top1:.4f}")
