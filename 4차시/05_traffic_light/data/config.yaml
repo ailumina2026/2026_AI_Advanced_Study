@@ -9,6 +9,6 @@ test: test/images  # test images (relative to 'path')
 # Classes (3개 신호등 클래스)
 nc: 3
 names:
-  0: green    # 초록불 - 진행 (GO)
-  1: red      # 빨간불 - 정지 (STOP)
+  0: red      # 빨간불 - 정지 (STOP)
+  1: green    # 초록불 - 진행 (GO)
   2: yellow   # 노란불 - 서행 (CAUTION)

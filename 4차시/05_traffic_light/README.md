@@ -20,8 +20,8 @@ YOLO Detection 모델을 활용하여 **교통 신호등 이미지**에서 신�
 ### 클래스 (3개)
 | 클래스 ID | 영문명 | 한글명 | 자율주행 동작 |
 |:---------:|:------:|:------:|:-------------|
-| 0 | green | 초록불 | GO (진행) |
-| 1 | red | 빨간불 | STOP (정지) |
+| 0 | red | 빨간불 | STOP (정지) |
+| 1 | green | 초록불 | GO (진행) |
 | 2 | yellow | 노란불 | CAUTION (서행) |
 
 ### 데이터 분할
@@ -163,8 +163,8 @@ for box in boxes:
 ```python
 def get_driving_action(signal_class):
     actions = {
-        0: ('GO', '🟢 진행하세요', (0, 255, 0)),        # green
-        1: ('STOP', '🔴 정지하세요', (255, 0, 0)),      # red
+        0: ('STOP', '🔴 정지하세요', (255, 0, 0)),      # red
+        1: ('GO', '🟢 진행하세요', (0, 255, 0)),        # green
         2: ('CAUTION', '🟡 서행하세요', (255, 255, 0))  # yellow
     }
     return actions.get(signal_class, ('UNKNOWN', '❓ 신호 불명', (128, 128, 128)))
