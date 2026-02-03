@@ -86,7 +86,7 @@ YOLO Classification 모델을 학습시킵니다.
 
 ---
 
-### 03_inference.ipynb - 진단 시스템
+### 03_disease_diagnostic.ipynb - 진단 시스템
 실제 이미지를 입력받아 질병을 진단하는 시스템을 구현합니다.
 
 **주요 내용:**
@@ -196,7 +196,7 @@ confidence = probs.top1conf.item()
    - Top-1/Top-5 Accuracy
    - 혼동 행렬 분석
        ↓
-6. 진단 시스템 (03_inference.ipynb)
+6. 진단 시스템 (03_disease_diagnostic.ipynb)
    - 이미지 입력 → 질병 진단
    - 대처 방법 안내
 ```
