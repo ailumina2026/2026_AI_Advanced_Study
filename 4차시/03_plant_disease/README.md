@@ -76,7 +76,6 @@ YOLO Classification 모델을 학습시킵니다.
 **주요 내용:**
 - Top-1, Top-5 Accuracy 측정
 - 혼동 행렬(Confusion Matrix) 시각화
-- 샘플 이미지 예측 테스트
 
 **빈칸 (3개):**
 | # | 위치 | 정답 | 힌트 |
