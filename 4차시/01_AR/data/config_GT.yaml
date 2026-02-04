@@ -1,0 +1,93 @@
+# COFW Dataset Configuration for YOLO Pose
+
+path: ../data  # dataset root dir
+train: train/images  # train images (relative to 'path')
+val: val/images    # val images (relative to 'path')
+test: test/images  # test images (relative to 'path')
+
+# Keypoint configuration
+kpt_shape: [68, 2]  # number of keypoints, number of dims (x, y)
+
+# Class names
+names:
+  0: face
+
+# Keypoint names (29 landmarks)
+keypoint_names:
+  0: jaw_1          # 1-17: 턱선 (Jaw line)
+  1: jaw_2
+  2: jaw_3
+  3: jaw_4
+  4: jaw_5
+  5: jaw_6
+  6: jaw_7
+  7: jaw_8
+  8: jaw_9
+  9: jaw_10
+  10: jaw_11
+  11: jaw_12
+  12: jaw_13
+  13: jaw_14
+  14: jaw_15
+  15: jaw_16
+  16: jaw_17
+  17: right_eyebrow_1  # 18-22: 오른쪽 눈썹
+  18: right_eyebrow_2
+  19: right_eyebrow_3
+  20: right_eyebrow_4
+  21: right_eyebrow_5
+  22: left_eyebrow_1   # 23-27: 왼쪽 눈썹
+  23: left_eyebrow_2
+  24: left_eyebrow_3
+  25: left_eyebrow_4
+  26: left_eyebrow_5
+  27: nose_bridge_1    # 28-31: 코 브릿지
+  28: nose_bridge_2
+  29: nose_bridge_3
+  30: nose_bridge_4
+  31: nose_bottom_1    # 32-36: 코 아래
+  32: nose_bottom_2
+  33: nose_bottom_3
+  34: nose_bottom_4
+  35: nose_bottom_5
+  36: right_eye_1      # 37-42: 오른쪽 눈
+  37: right_eye_2
+  38: right_eye_3
+  39: right_eye_4
+  40: right_eye_5
+  41: right_eye_6
+  42: left_eye_1       # 43-48: 왼쪽 눈
+  43: left_eye_2
+  44: left_eye_3
+  45: left_eye_4
+  46: left_eye_5
+  47: left_eye_6
+  48: outer_lip_1      # 49-60: 외부 입술
+  49: outer_lip_2
+  50: outer_lip_3
+  51: outer_lip_4
+  52: outer_lip_5
+  53: outer_lip_6
+  54: outer_lip_7
+  55: outer_lip_8
+  56: outer_lip_9
+  57: outer_lip_10
+  58: outer_lip_11
+  59: outer_lip_12
+  60: inner_lip_1      # 61-68: 내부 입술
+  61: inner_lip_2
+  62: inner_lip_3
+  63: inner_lip_4
+  64: inner_lip_5
+  65: inner_lip_6
+  66: inner_lip_7
+  67: inner_lip_8
+
+flip_idx: 
+  [16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,
+   26, 25, 24, 23, 22, 21, 20, 19, 18, 17,
+   27, 28, 29, 30,
+   35, 34, 33, 32, 31,
+   45, 44, 43, 42, 47, 46, 40, 39, 38, 37, 41, 36,
+   54, 53, 52, 51, 50, 49, 48, 59, 58, 57, 56, 55,
+   64, 63, 62, 61, 60, 67, 66, 65]
